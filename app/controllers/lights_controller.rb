@@ -27,6 +27,7 @@ class LightsController < ApplicationController
     light = client.light(light_in_db.id)
     light.on!
     light.hue = light_in_db.hue
+    light.brightness = light_in_db.brightness
     redirect_to [:lights]
   end
 
@@ -46,6 +47,6 @@ class LightsController < ApplicationController
   private
 
   def light_params
-    params.require(:light).permit(:name, :hue, :color_temperature, :transistion_time)
+    params.require(:light).permit(:name, :hue, :brightness, :color_temperature, :transistion_time)
   end
 end

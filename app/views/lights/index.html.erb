@@ -1,6 +1,6 @@
 <h1>Hue Lampen</h1>
 
-<table>
+<table style='border: solid'>
   <% (1..3).each do |row| %>
     <tr>
       <% (1..3).each do |col| %>
@@ -9,7 +9,7 @@
 
           <% if light %>
 
-            <td>
+            <td style='border: solid'>
               <h3><%= light.name %></h3>
               <%= render 'adjust_light_form', light: light %>
               <%= link_to "zet uit", [:turn_off, light] %>
@@ -17,8 +17,7 @@
 
           <% else %>
 
-            <td>
-              <h3>-</h3><br><br><br><br>
+            <td style='border: solid; background-color: #000'>
             </td>
 
           <% end %>
