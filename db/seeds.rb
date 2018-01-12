@@ -5,3 +5,11 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+Light.destroy_all
+(1..9).each do |n|
+  Light.create(
+    id: n,
+    name: "Lamp ID #{n}"
+  )
+end

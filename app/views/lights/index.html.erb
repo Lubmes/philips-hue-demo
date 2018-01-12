@@ -1,7 +1,20 @@
 <h1>Hue Lampen</h1>
 
 <% if @lights.any? %>
-  Dit zijn de hue lampen ...
+  <% @lights.each do |light| %>
+    <%= light.name %>
+
+    <%= render 'adjust_light_form', light: light %>
+
+    <%= link_to "pas toe", [:adjust_light, light] %>
+    <br>
+    <br>
+    <br>
+  <% end %>
 <% else %>
   Geen lampen in systeem.
+<% end %>
+
+<% if false %>
+<h4><%= link_to "voeg een nieuwe lamp toe", [:new, :light] %></h4>
 <% end %>
