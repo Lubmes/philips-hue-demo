@@ -4,6 +4,7 @@ class CreateLights < ActiveRecord::Migration[5.1]
       t.string  :name
       t.integer :hue
       t.integer :brightness
+      t.integer :saturation
       t.integer :color_temperature
       t.integer :transistion_time
       t.boolean :on

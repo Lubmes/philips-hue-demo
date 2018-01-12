@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(version: 20180112122401) do
     t.string "name"
     t.integer "hue"
     t.integer "brightness"
+    t.integer "saturation"
     t.integer "color_temperature"
     t.integer "transistion_time"
     t.boolean "on"
