@@ -1,19 +1,32 @@
 <h1>Hue Lampen</h1>
 
-<% if @lights.any? %>
-  <% @lights.each do |light| %>
-    <%= light.name %>
+<table>
+  <% (1..3).each do |row| %>
+    <tr>
+      <% (1..3).each do |col| %>
 
-    <%= render 'adjust_light_form', light: light %>
+        <% light = @lights.find_by(row: row, column: col) %>
 
-    <%= link_to "pas toe", [:adjust_light, light] %>
-    <br>
-    <br>
-    <br>
+          <% if light %>
+
+            <td>
+              <h3><%= light.name %></h3>
+              <%= render 'adjust_light_form', light: light %>
+              <%= link_to "zet uit", [:turn_off, light] %>
+            </td>
+
+          <% else %>
+
+            <td>
+              <h3>-</h3><br><br><br><br>
+            </td>
+
+          <% end %>
+
+      <% end %>
+    </tr>
   <% end %>
-<% else %>
-  Geen lampen in systeem.
-<% end %>
+</table>
 
 <% if false %>
 <h4><%= link_to "voeg een nieuwe lamp toe", [:new, :light] %></h4>

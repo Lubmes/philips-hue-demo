@@ -1,1 +1,8 @@
-(Instellingen)
+<%= form_for [:adjust, light] do |f| %>
+
+  <%= f.label :hue %>
+  <%= f.number_field :hue %><br>
+
+  <%= f.submit 'pas licht aan' %>
+
+<% end %>

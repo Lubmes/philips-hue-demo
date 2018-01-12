@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   resources 'lights' do
     member do
-      get 'adjust_light'
+      patch 'adjust'
+      get 'turn_off'
     end
   end
 

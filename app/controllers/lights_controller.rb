@@ -18,17 +18,30 @@ class LightsController < ApplicationController
     end
   end
 
-  def adjust_light
+  def adjust
     client = Hue::Client.new
-    light = client.lights.first
+    light_in_db = Light.find(params[:id])
+    light_in_db.update(light_params)
+    light_in_db.save
+
+    light = client.light(light_in_db.id)
     light.on!
-    # light.hue = 46920
-    light.hue = 10000
-    light.color_temperature = 100
-    transition_time = 10*5 # Hue transition times are in 1/10 of a second.
-    light.set_state({:color_temperature => 400}, transition_time)
+    light.hue = light_in_db.hue
     redirect_to [:lights]
   end
+
+  def turn_off
+    client = Hue::Client.new
+    light_in_db = Light.find(params[:id])
+    light_in_db.on = false
+    light_in_db.save
+
+    light = client.light(light_in_db.id)
+    light.off!
+
+    redirect_to [:lights]
+  end
+
 
   private
 
